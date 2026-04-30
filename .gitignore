@@ -1,0 +1,18 @@
+# Build outputs
+build/
+*.o
+*.out
+*.a
+*.so
+*.dylib
+*.exe
+
+# macOS
+.DS_Store
+
+# Editor / local config
+.vscode/
+.idea/
+*.swp
+*.swo
+*.un~
