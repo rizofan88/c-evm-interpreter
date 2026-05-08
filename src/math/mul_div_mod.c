@@ -41,6 +41,7 @@ static int uint256_ge(const uint256_t *a, const uint256_t *b) {
     }
 
     return 1;
+    
 }
 
 
@@ -93,6 +94,7 @@ static div_result_t uint256_divmod(const uint256_t *numerator, const uint256_t *
     }
     
     return result;
+    
 }
 
 
