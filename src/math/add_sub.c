@@ -56,4 +56,5 @@ evm_status_t subtraction(const uint256_t *a, const uint256_t *b, uint256_t *out)
     }
 
     return EVM_OK;
+    
 }
