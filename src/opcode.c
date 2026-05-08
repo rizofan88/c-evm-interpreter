@@ -64,7 +64,7 @@ static const evm_opcode_t opcode_table[] = {
     { 0x7e, "PUSH31", 31 },
     { 0x7f, "PUSH32", 32 },
     
-    { 0xFE, "INVALID", 100 }
+    { 0xFE, "INVALID", 0 }
 
 };
 
