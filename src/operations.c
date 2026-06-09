@@ -69,3 +69,11 @@ evm_status_t divi(evm_t *evm) {
 evm_status_t mod(evm_t *evm) {
     return stack_op(evm, modulo);
 }
+
+evm_status_t shl(evm_t *evm) {
+    return stack_op(evm, shift_left);
+}
+
+evm_status_t shr(evm_t *evm) {
+    return stack_op(evm, shift_right);
+}

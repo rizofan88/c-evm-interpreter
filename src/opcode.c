@@ -28,6 +28,10 @@ static const evm_opcode_t opcode_table[] = {
     { 0x18, "XOR",    0 },
     { 0x19, "NOT",    0 },
 
+    { 0x1a, "BYTE",   0 },
+    { 0x1b, "SHL",    0 },
+    { 0x1c, "SHR",    0 },
+
     { 0x50, "POP",    0 },
     { 0x52, "MSTORE", 0 },
     

@@ -8,5 +8,7 @@ evm_status_t mul(evm_t *evm);
 evm_status_t sub(evm_t *evm); 
 evm_status_t divi(evm_t *evm); 
 evm_status_t mod(evm_t *evm); 
+evm_status_t shl(evm_t *evm); 
+evm_status_t shr(evm_t *evm); 
 
 #endif

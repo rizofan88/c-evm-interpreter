@@ -137,6 +137,8 @@ Implemented or partially implemented:
 - `SUB`
 - `DIV`
 - `MOD`
+- `SHL`
+- `SHR`
 - `POP`
 - `PUSH1` through `PUSH32`
 

@@ -6,8 +6,9 @@
 
 evm_status_t addition(const uint256_t *a, const uint256_t *b, uint256_t *out) {
 
-    if(!a || !b || !out) 
+    if(!a || !b || !out) {
         return EVM_INTERNAL_ERROR;
+    }
 
     uint64_t carry = 0;
 

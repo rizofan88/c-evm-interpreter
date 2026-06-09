@@ -8,5 +8,7 @@ evm_status_t subtraction(const uint256_t *a, const uint256_t *b, uint256_t *out)
 evm_status_t multiplication(const uint256_t *a, const uint256_t *b, uint256_t *out);
 evm_status_t division(const uint256_t *a, const uint256_t *b, uint256_t *out);
 evm_status_t modulo(const uint256_t *a, const uint256_t *b, uint256_t *out);
+evm_status_t shift_left(const uint256_t *a, const uint256_t *b, uint256_t *out);
+evm_status_t shift_right(const uint256_t *a, const uint256_t *b, uint256_t *out);
 
 #endif

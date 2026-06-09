@@ -299,6 +299,50 @@ static void test_modulo_by_zero_returns_zero(void) {
 
 }
 
+static void test_shl_shifts_value_left(void) {
+
+    evm_t evm;
+    init_test_evm(&evm);
+
+    uint8_t value[UINT256_BYTES];
+    uint8_t shift[UINT256_BYTES];
+    uint8_t expected_res[UINT256_BYTES];
+
+    make_test_word(value, 0x02);
+    make_test_word(shift, 0x01);
+    make_test_word(expected_res, 0x04);
+
+    TEST_ASSERT(push_one_to_stack(&evm, value) == EVM_OK);
+    TEST_ASSERT(push_one_to_stack(&evm, shift) == EVM_OK);
+    TEST_ASSERT(shl(&evm) == EVM_OK);
+
+    TEST_ASSERT(evm.stack_pointer == 1);
+    TEST_ASSERT(memcmp(evm.stack[0], expected_res, UINT256_BYTES) == 0);
+
+}
+
+static void test_shr_shifts_value_right(void) {
+
+    evm_t evm;
+    init_test_evm(&evm);
+
+    uint8_t value[UINT256_BYTES];
+    uint8_t shift[UINT256_BYTES];
+    uint8_t expected_res[UINT256_BYTES];
+
+    make_test_word(value, 0x04);
+    make_test_word(shift, 0x01);
+    make_test_word(expected_res, 0x02);
+
+    TEST_ASSERT(push_one_to_stack(&evm, value) == EVM_OK);
+    TEST_ASSERT(push_one_to_stack(&evm, shift) == EVM_OK);
+    TEST_ASSERT(shr(&evm) == EVM_OK);
+
+    TEST_ASSERT(evm.stack_pointer == 1);
+    TEST_ASSERT(memcmp(evm.stack[0], expected_res, UINT256_BYTES) == 0);
+
+}
+
 int main(void) {
     
     RUN_TEST(test_calling_add_pops_two_values_and_pushes_sum);
@@ -314,6 +358,8 @@ int main(void) {
     RUN_TEST(test_mul_overflow_modulo_2_256);
     RUN_TEST(test_division_by_zero_returns_zero);
     RUN_TEST(test_modulo_by_zero_returns_zero);
+    RUN_TEST(test_shl_shifts_value_left);
+    RUN_TEST(test_shr_shifts_value_right);
         
     return 0;
 

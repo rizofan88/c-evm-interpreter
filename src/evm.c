@@ -60,6 +60,14 @@ evm_status_t evm_state(uint8_t *bytes, size_t len) {
                     status = mod(&evm);
                     break;
                 } 
+                case 0x1b: {
+                    status = shl(&evm);
+                    break;
+                }
+                case 0x1c: {
+                    status = shr(&evm);
+                    break;
+                }
                 case 0x50: {
                     status = pop_from_stack(&evm, 1);
                     break;

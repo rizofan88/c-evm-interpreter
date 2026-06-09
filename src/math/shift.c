@@ -56,3 +56,51 @@ void uint256_shr(uint256_t *a, int n) {
     }
 
 }
+
+static int shift_too_large(const uint256_t *shift) {
+    return shift->w[1] != 0 ||
+           shift->w[2] != 0 ||
+           shift->w[3] != 0 ||
+           shift->w[0] > 255;
+}
+
+evm_status_t shift_left(const uint256_t *a, const uint256_t *b, uint256_t *out) { 
+    
+    if(!a || !b || !out) {
+        return EVM_INTERNAL_ERROR;
+    }
+
+    if (shift_too_large(a)) {
+        for (size_t i = 0; i < UINT256_LIMBS; i++) {
+            out->w[i] = 0;
+        }
+
+        return EVM_OK;
+    }
+
+    *out = *b;
+    uint256_shl(out, (int)a->w[0]);
+
+    return EVM_OK;
+
+}
+
+evm_status_t shift_right(const uint256_t *a, const uint256_t *b, uint256_t *out) { 
+
+    if(!a || !b || !out) {
+        return EVM_INTERNAL_ERROR;
+    }
+
+    if (shift_too_large(a)) {
+        for (size_t i = 0; i < UINT256_LIMBS; i++) {
+            out->w[i] = 0;
+        }
+
+        return EVM_OK;
+    }
+
+    *out = *b;
+    uint256_shr(out, (int)a->w[0]);
+
+    return EVM_OK;
+}
